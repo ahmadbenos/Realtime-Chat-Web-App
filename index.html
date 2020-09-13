@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background: whitesmoke !important;
+        }
+
+        .online {
+            pointer-events: none !important;
+        }
+
+        #chat-page {
+            display: none;
+        }
+
+        #chat-enter {
+            display: block;
+        }
+
+        .myListItem {
+            padding-bottom: 0px !important;
+        }
+
+        .msg-name {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .myList {
+            margin-top: 20px !important;
+            padding-bottom: 25px !important;
+        }
+
+        #sent-message {
+            outline: none !important;
+            box-shadow: none !important;
+            border: 0.01cm solid !important;
+
+        }
+    </style>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Real Time chat App</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2 class="display-4 text-center">Nodejs Chat App</h2>
+        <h5 class="text-center">by Ahmad Tarabein</h5>
+        <a href="#" class="text-center text-danger">
+            <h6>View code/repository on github <i class="fab fa-github" style="color: black;"></i></h6>
+        </a>
+        <form id="chat-enter">
+            <div class="form-group my-3">
+                <label for="name">
+                    <h4>Enter your name:</h4>
+                </label>
+                <input type="text" class="form-control" id="name" required>
+                <button type="submit" class="my-3 btn btn-primary" id="enter-btn">Enter Chat</button>
+            </div>
+        </form>
+
+        <!-- online users div -->
+        <div id="chat-page" class="my-3">
+            <div class="text-center online-div my-2">
+                <div class="btn btn-primary online">Online users <span class="badge badge-light"
+                        id="online-number"></span>
+                </div>
+            </div>
+
+            <!-- Message Div -->
+
+            <div class="myList">
+                <ul class="list-group" id="list">
+
+                </ul>
+            </div>
+
+
+            <!-- Message submission -->
+            <div class="text-center fixed-bottom" id="msgDiv">
+                <div class="input-group">
+                    <input type="text" class="form-control shadow-none" placeholder="type message" id="sent-message">
+                    <div class="input-group-append">
+                        <button class="btn btn-danger" type="button" id="send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+</body>
+
+</html>
