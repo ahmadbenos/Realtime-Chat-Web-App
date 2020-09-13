@@ -8,6 +8,7 @@ const enterbtn = document.getElementById("enter-btn");
 const sendBtn = document.getElementById("send-btn");
 const list = document.getElementById("list");
 const message = document.getElementById("sent-message");
+const msgList = document.querySelector(".myList");
 
 socket.on("connected", (data) => {
   onlineNumber.innerHTML = data.length;
@@ -16,6 +17,9 @@ socket.on("connected", (data) => {
 socket.on("user-connected", (data) => {
   onlineNumber.innerHTML = data.users.length;
   showNewConnection(data.name);
+
+  //scroll down
+  window.scrollTo(0, msgList.scrollHeight);
 });
 
 enterForm.addEventListener("submit", (event) => {
@@ -29,16 +33,26 @@ enterForm.addEventListener("submit", (event) => {
 
 socket.on("message-received", (data) => {
   addMessage(data.name, data.message);
+
+  //scroll down
+  window.scrollTo(0, msgList.scrollHeight);
 });
 
 socket.on("user-disconnected", (data) => {
   onlineNumber.innerHTML = data.users.length;
   showDisconnection(data.name);
+
+  //scroll down
+  window.scrollTo(0, msgList.scrollHeight);
 });
 
 sendBtn.addEventListener("click", () => {
   addMessage("you", message.value);
   socket.emit("message-sent", message.value);
+
+  //scroll down
+  window.scrollTo(0, msgList.scrollHeight);
+
   message.value = "";
 });
 
